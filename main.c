@@ -6,7 +6,7 @@
 /*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:08:33 by bolcay            #+#    #+#             */
-/*   Updated: 2025/02/26 14:39:59 by batuhan          ###   ########.fr       */
+/*   Updated: 2025/02/26 17:10:22 by batuhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,42 +16,26 @@
 
 int	main(void)
 {
+	t_game *game;
+
+	game = malloc(sizeof(t_game));
+	if (!game)
+		return (0);
 	char *hey[] = {
-	"0000000000000000000000000000000000",
-	"0000000000000000000000000000000000",
-	"0000000000000000000000000000000000",
-	"0000000000000000000000000000000000",
-	"0000000000000000000000000000000000",
-	"0000000000000000000000000000000000",
+	"1111111111111111111111111111111111",
+	"1E0000000000000C00000C000000000001",
+	"1010010100100000101001000000010101",
+	"1010010010101010001001000000010101",
+	"1P0000000C00C0000000000000000000C1",
+	"1111111111111111111111111111111111",
 	NULL
 	};
+	game->map = hey;
 	mlx_t	*mlx = mlx_init(WIDTH, HEIGHT, "Game", true);
 	if (!mlx)
 		return (0);
-	mlx_texture_t	*floor_tex = mlx_load_png("/home/batuhan/School/so_long/dungeon_tile1.png");
-	if (!floor_tex)
-		return (0);
-	mlx_image_t	*floor_img = mlx_texture_to_image(mlx, floor_tex);
-	if (!floor_img)
-		return (0);
-	int	col = 0;
-	int row = 0;
-	while (hey[row])
-	{
-		col = 0;
-		while (hey[row][col])
-		{
-			int x_pos = col * TILE_SIZE;
-			int	y_pos = row * TILE_SIZE;
-			if (hey[row][col] == '0')
-				mlx_image_to_window(mlx, floor_img, x_pos, y_pos);
-			col++;
-		}
-		row++;
-	}
+	initiate_map(mlx, game);
 	mlx_loop(mlx);
-	mlx_delete_image(mlx, floor_img);
-
 	mlx_terminate(mlx);
 	return (0);
 }
@@ -60,15 +44,15 @@ int	main(void)
 // {
 	// void	*mlx_ptr;
 	// char	*title;
-	// char *hey[] = {
-	// "1111111111111111111111111111111111",
-	// "1E0000000000000C00000C000000000001",
-	// "1010010100100000101001000000010101",
-	// "1010010010101010001001000000010101",
-	// "1P0000000C00C0000000000000000000C1",
-	// "1111111111111111111111111111111111",
-	// NULL
-	// };
+	char *hey[] = {
+	"1111111111111111111111111111111111",
+	"1E0000000000000C00000C000000000001",
+	"1010010100100000101001000000010101",
+	"1010010010101010001001000000010101",
+	"1P0000000C00C0000000000000000000C1",
+	"1111111111111111111111111111111111",
+	NULL
+	};
 
 	// if (check_corners(hey) == -1)
 	// 	ft_printf("map is not valid\n");

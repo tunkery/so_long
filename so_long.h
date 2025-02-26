@@ -6,7 +6,7 @@
 /*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:05:29 by bolcay            #+#    #+#             */
-/*   Updated: 2025/02/21 14:19:21 by batuhan          ###   ########.fr       */
+/*   Updated: 2025/02/26 17:10:11 by batuhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@ typedef struct s_game
 	int		start;
 	int		start_count;
 }	t_game;
+
+void    map_floor(mlx_t *mlx, t_game *game);
+void    map_wall(mlx_t *mlx, t_game *game);
+void    map_collectable(mlx_t *mlx, t_game *game);
+void    map_exit(mlx_t *mlx, t_game *game);
+void    map_player(mlx_t *mlx, t_game *game);
+void    initiate_map(mlx_t *mlx, t_game *game);
 
 // int	check_corners(char **str);
 // int	check_items(char **str);

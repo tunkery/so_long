@@ -3,14 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   map_stuff.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bolcay <bolcay@student.42.fr>              +#+  +:+       +#+        */
+/*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 16:36:57 by bolcay            #+#    #+#             */
-/*   Updated: 2025/02/18 18:51:09 by bolcay           ###   ########.fr       */
+/*   Updated: 2025/02/26 15:40:46 by batuhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	valid_path(char **str)
+{
+	int	i;
+	int	j;
+	int	count;
+
+	i = 1;
+	while (str[i])
+	{
+		j = 0;
+		count = 0;
+		while (str[i][j])
+		{
+			if (str[i][j] == '0' || str[i][j] == 'C')
+				count++;
+			j++;
+		}
+		if (count < 1 && str[i])
+			return (-1);
+		i++;
+	}
+	return (1);
+}
 
 int	check_corners(char **str)
 {
