@@ -6,7 +6,7 @@
 /*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:59:17 by batuhan           #+#    #+#             */
-/*   Updated: 2025/02/26 17:10:18 by batuhan          ###   ########.fr       */
+/*   Updated: 2025/02/26 18:22:06 by batuhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,10 @@ void    map_collectable(mlx_t *mlx, t_game *game)
     int row;
 
     collectable_image = mlx_load_png("images/collectable.png");
-    if (!collectable_image)
-        return ;
     collectable = mlx_texture_to_image(mlx, collectable_image);
+    if (!collectable || !collectable_image)
+        return ;
+    game->collectable = 0;
     row = 0;
     while (game->map[row])
     {
@@ -91,7 +92,10 @@ void    map_collectable(mlx_t *mlx, t_game *game)
         while (game->map[row][col])
         {
             if (game->map[row][col] == 'C')
+            {
                 mlx_image_to_window(mlx, collectable, (col * TILE_SIZE), (row * TILE_SIZE));
+                game->collectable++;
+            }
             col++;
         }
         row++;
@@ -148,5 +152,39 @@ void    map_player(mlx_t *mlx, t_game *game)
         }
         row++;
     }
+    mlx_delete_texture(player_image);
+}
+
+void    map_background(mlx_t *mlx, t_game *game, int x, int y)
+{
+    mlx_image_t *floor;
+    mlx_texture_t   *floor_image;
+    int	col;
+    int row;
+
+    floor_image = mlx_load_png("images/dungeon_tile1.png");
+    floor = mlx_texture_to_image(mlx, floor_image);
+    if (!floor || !floor_image)
+        return ;
+    col = x * TILE_SIZE;
+    row = y * TILE_SIZE;
+    mlx_image_to_window(mlx, floor, col, row);
+    mlx_delete_texture(floor_image);
+}
+
+void    player_image(mlx_t *mlx, t_game *game, int x, int y)
+{
+    mlx_image_t *player;
+    mlx_texture_t   *player_image;
+    int col;
+    int row;
+
+    player_image = mlx_load_png("images/player_image.png");
+    player = mlx_texture_to_image(mlx, player_image);
+    if (!player || !player_image)
+        return ;
+    col = x * TILE_SIZE;
+    row = y * TILE_SIZE;
+    mlx_image_to_window(mlx, player, col, row);
     mlx_delete_texture(player_image);
 }

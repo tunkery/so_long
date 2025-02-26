@@ -6,23 +6,21 @@
 /*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 19:00:43 by bolcay            #+#    #+#             */
-/*   Updated: 2025/02/20 23:47:42 by batuhan          ###   ########.fr       */
+/*   Updated: 2025/02/26 18:30:09 by batuhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	key_hook(mlx_key_data_t keys, void *game)
+void	key_hook(mlx_key_data_t keys, t_game *hey, mlx_t *mlx)
 {
-	t_game *hey;
-	t_player *plyr;
 	int		key_code;
 
 	key_code = keys.key;
 	if (keys.action == MLX_PRESS || keys.action == MLX_REPEAT)
 	{
 		if (key_code == MLX_KEY_W)
-			move_up(hey, plyr);
+			move_up(hey, hey->player, mlx);
 		else if (key_code == MLX_KEY_A)
 
 		else if (key_code == MLX_KEY_S)
@@ -36,22 +34,138 @@ void	key_hook(mlx_key_data_t keys, void *game)
 	}
 }
 
-int	move_up(t_game *game, t_player *player)
+int	move_up(t_game *game, t_player *player, mlx_t *mlx)
 {
-	player->y++;
 	if (game->map[player->x][player->y] == 'C')
 	{
 		ft_printf("a motivational message for collecting something!!!\n");
+		game->collectable_count++;
+		map_background(mlx, game, player->x, player->y);
+		player->x++;
+		player_image(mlx, game, player->x, player->y);
 	}
-	if (game->map[player->x][player->y] == '1')
+	// else if (game->map[player->x][player->y] == '1')
+	// {
+	// 	ft_printf("bruh... you can't go there...\n");
+	// }
+	else if (game->map[player->x][player->y] == 'E' && game->collectable == game->collectable_count)
 	{
-		ft_printf("bruh... you can't go there...\n");
+		ft_printf("congrats!!\n");
 	}
+	else if (game->map[player->x][player->y] == 'E' && game->collectable > game->collectable_count)
+	{
+		ft_printf("you need to collect %d more items\n", (game->collectable - game->collectable_count));
+		player->x++;
+		player_image(mlx, game, player->x, player->y);
+	}
+	else if (game->map[player->x][player->y] == '0')
+	{
+		player->x++;
+		player_image(mlx, game, player->x, player->y);
+	}
+	player->moves++;
+	ft_printf("move: up,  number of moves: %d\n", player->moves);
 	return (1);
 }
 
-void	move_up(t_game game)
+int	move_down(t_game *game, t_player *player, mlx_t *mlx)
 {
-	int	i;
-	int	j;
+	if (game->map[player->x][player->y] == 'C')
+	{
+		ft_printf("a motivational message for collecting something!!!\n");
+		game->collectable_count++;
+		map_background(mlx, game, player->x, player->y);
+		player->x--;
+		player_image(mlx, game, player->x, player->y);
+	}
+	// else if (game->map[player->x][player->y] == '1')
+	// {
+	// 	ft_printf("bruh... you can't go there...\n");
+	// }
+	else if (game->map[player->x][player->y] == 'E' && game->collectable == game->collectable_count)
+	{
+		ft_printf("congrats!!\n");
+	}
+	else if (game->map[player->x][player->y] == 'E' && game->collectable > game->collectable_count)
+	{
+		ft_printf("you need to collect %d more items\n", (game->collectable - game->collectable_count));
+		player->x--;
+		player_image(mlx, game, player->x, player->y);
+	}
+	else if (game->map[player->x][player->y] == '0')
+	{
+		player->x--;
+		player_image(mlx, game, player->x, player->y);
+	}
+	player->moves++;
+	ft_printf("move: down,  number of moves: %d\n", player->moves);
+	return (1);
+}
+
+int	move_right(t_game *game, t_player *player, mlx_t *mlx)
+{
+	if (game->map[player->x][player->y] == 'C')
+	{
+		ft_printf("a motivational message for collecting something!!!\n");
+		game->collectable_count++;
+		map_background(mlx, game, player->x, player->y);
+		player->y++;
+		player_image(mlx, game, player->x, player->y);
+	}
+	// else if (game->map[player->x][player->y] == '1')
+	// {
+	// 	ft_printf("bruh... you can't go there...\n");
+	// }
+	else if (game->map[player->x][player->y] == 'E' && game->collectable == game->collectable_count)
+	{
+		ft_printf("congrats!!\n");
+	}
+	else if (game->map[player->x][player->y] == 'E' && game->collectable > game->collectable_count)
+	{
+		ft_printf("you need to collect %d more items\n", (game->collectable - game->collectable_count));
+		player->y++;
+		player_image(mlx, game, player->x, player->y);
+	}
+	else if (game->map[player->x][player->y] == '0')
+	{
+		player->y++;
+		player_image(mlx, game, player->x, player->y);
+	}
+	player->moves++;
+	ft_printf("move: right,  number of moves: %d\n", player->moves);
+	return (1);
+}
+
+int	move_left(t_game *game, t_player *player, mlx_t *mlx)
+{
+	if (game->map[player->x][player->y] == 'C')
+	{
+		ft_printf("a motivational message for collecting something!!!\n");
+		game->collectable_count++;
+		map_background(mlx, game, player->x, player->y);
+		player->y--;
+		player_image(mlx, game, player->x, player->y);
+	}
+	// else if (game->map[player->x][player->y] == '1')
+	// {
+	// 	ft_printf("bruh... you can't go there...\n");
+	// }
+	else if (game->map[player->x][player->y] == 'E' && game->collectable == game->collectable_count)
+	{
+		ft_printf("congrats!!\n");
+	}
+	else if (game->map[player->x][player->y] == 'E' && game->collectable > game->collectable_count)
+	{
+		ft_printf("you need to collect %d more items\n", (game->collectable - game->collectable_count));
+		player->y--;
+		player_image(mlx, game, player->x, player->y);
+	}
+	else if (game->map[player->x][player->y] == '0')
+	{
+		player->y--;
+		player_image(mlx, game, player->x, player->y);
+	}
+	player->moves++;
+	ft_printf("move: left,  number of moves: %d\n", player->moves);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:08:33 by bolcay            #+#    #+#             */
-/*   Updated: 2025/02/26 17:10:22 by batuhan          ###   ########.fr       */
+/*   Updated: 2025/02/26 17:20:53 by batuhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,15 @@
 int	main(void)
 {
 	t_game *game;
+	t_player *play;
 
 	game = malloc(sizeof(t_game));
 	if (!game)
 		return (0);
+	play = malloc(sizeof(t_player));
+	if (!play)
+		return (0);
+	game->player = play;
 	char *hey[] = {
 	"1111111111111111111111111111111111",
 	"1E0000000000000C00000C000000000001",

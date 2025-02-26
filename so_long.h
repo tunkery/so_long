@@ -6,7 +6,7 @@
 /*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:05:29 by bolcay            #+#    #+#             */
-/*   Updated: 2025/02/26 17:10:11 by batuhan          ###   ########.fr       */
+/*   Updated: 2025/02/26 18:22:21 by batuhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_game
 	mlx_t	mlx;
 	char	**map;
 	char	*row;
-	char	**player_pos;
+	void	*player;
 	int		collectable_count;
 	int		collectable;
 	int		exit;
@@ -54,6 +54,8 @@ void    map_collectable(mlx_t *mlx, t_game *game);
 void    map_exit(mlx_t *mlx, t_game *game);
 void    map_player(mlx_t *mlx, t_game *game);
 void    initiate_map(mlx_t *mlx, t_game *game);
+void    map_background(mlx_t *mlx, t_game *game, int x, int y);
+void    player_image(mlx_t *mlx, t_game *game, int x, int y);
 
 // int	check_corners(char **str);
 // int	check_items(char **str);
