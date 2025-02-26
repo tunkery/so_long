@@ -6,7 +6,7 @@
 /*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:59:17 by batuhan           #+#    #+#             */
-/*   Updated: 2025/02/26 18:22:06 by batuhan          ###   ########.fr       */
+/*   Updated: 2025/02/26 18:50:17 by batuhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ void    map_player(mlx_t *mlx, t_game *game)
     mlx_delete_texture(player_image);
 }
 
-void    map_background(mlx_t *mlx, t_game *game, int x, int y)
+void    map_background(mlx_t *mlx, int x, int y)
 {
     mlx_image_t *floor;
     mlx_texture_t   *floor_image;
@@ -172,7 +172,7 @@ void    map_background(mlx_t *mlx, t_game *game, int x, int y)
     mlx_delete_texture(floor_image);
 }
 
-void    player_image(mlx_t *mlx, t_game *game, int x, int y)
+void    player_image(mlx_t *mlx, int x, int y)
 {
     mlx_image_t *player;
     mlx_texture_t   *player_image;

@@ -6,11 +6,12 @@
 #    By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/16 19:05:06 by bolcay            #+#    #+#              #
-#    Updated: 2025/02/26 17:10:13 by batuhan          ###   ########.fr        #
+#    Updated: 2025/02/26 18:50:19 by batuhan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c initiate_map.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+SRCS = main.c initiate_map.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
+		key_stuff.c
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g $(INCLUDE)
