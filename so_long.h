@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bolcay <bolcay@student.42.fr>              +#+  +:+       +#+        */
+/*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:05:29 by bolcay            #+#    #+#             */
-/*   Updated: 2025/02/18 19:33:03 by bolcay           ###   ########.fr       */
+/*   Updated: 2025/02/21 14:19:21 by batuhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-# define WIDTH 1800
-# define HEIGHT	1000
+# define TILE_SIZE 32
+# define WIDTH 2200
+# define HEIGHT	1200
 
 typedef struct s_player
 {
@@ -47,8 +48,8 @@ typedef struct s_game
 	int		start_count;
 }	t_game;
 
-int	check_corners(char **str);
-int	check_items(char **str);
-int	check_shape(char **str);
+// int	check_corners(char **str);
+// int	check_items(char **str);
+// int	check_shape(char **str);
 
 #endif

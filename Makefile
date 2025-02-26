@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bolcay <bolcay@student.42.fr>              +#+  +:+       +#+         #
+#    By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/16 19:05:06 by bolcay            #+#    #+#              #
-#    Updated: 2025/02/18 19:16:08 by bolcay           ###   ########.fr        #
+#    Updated: 2025/02/21 14:10:00 by batuhan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c map_stuff.c key_stuff.c
+SRCS = main.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g $(INCLUDE)
@@ -29,7 +29,7 @@ MLX42_DIR = MLX42
 MLX42_LIB = $(MLX42_DIR)/build/libmlx42.a
 
 INCLUDE     = -I$(MLX42_DIR)/include -I header -I libft
-LDINCLUDE   = -L$(MLX42_DIR)/build -lmlx42 -L$(LIBFT_DIR) -lft -L$(FT_PRINTF_DIR) -lftprintf -lglfw -framework Cocoa -framework OpenGL -framework IOKit
+LDINCLUDE   = -L$(MLX42_DIR)/build -lmlx42 -L$(LIBFT_DIR) -lft -L$(FT_PRINTF_DIR) -lftprintf -lglfw
 
 all: ${NAME}
 

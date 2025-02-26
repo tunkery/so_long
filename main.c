@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bolcay <bolcay@student.42.fr>              +#+  +:+       +#+        */
+/*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:08:33 by bolcay            #+#    #+#             */
-/*   Updated: 2025/02/18 18:51:41 by bolcay           ###   ########.fr       */
+/*   Updated: 2025/02/26 14:39:59 by batuhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,61 @@
 
 // static void	init_map(char **hey);
 
-int	main()
+int	main(void)
 {
-	// void	*mlx_ptr;
-	// char	*title;
 	char *hey[] = {
-	"1111111111111111111111111111111111",
-	"1E0000000000000C00000C000000000001",
-	"1010010100100000101001000000010101",
-	"1010010010101010001001000000010101",
-	"1P0000000C00C0000000000000000000C1",
-	"1111111111111111111111111111111111",
+	"0000000000000000000000000000000000",
+	"0000000000000000000000000000000000",
+	"0000000000000000000000000000000000",
+	"0000000000000000000000000000000000",
+	"0000000000000000000000000000000000",
+	"0000000000000000000000000000000000",
 	NULL
 	};
+	mlx_t	*mlx = mlx_init(WIDTH, HEIGHT, "Game", true);
+	if (!mlx)
+		return (0);
+	mlx_texture_t	*floor_tex = mlx_load_png("/home/batuhan/School/so_long/dungeon_tile1.png");
+	if (!floor_tex)
+		return (0);
+	mlx_image_t	*floor_img = mlx_texture_to_image(mlx, floor_tex);
+	if (!floor_img)
+		return (0);
+	int	col = 0;
+	int row = 0;
+	while (hey[row])
+	{
+		col = 0;
+		while (hey[row][col])
+		{
+			int x_pos = col * TILE_SIZE;
+			int	y_pos = row * TILE_SIZE;
+			if (hey[row][col] == '0')
+				mlx_image_to_window(mlx, floor_img, x_pos, y_pos);
+			col++;
+		}
+		row++;
+	}
+	mlx_loop(mlx);
+	mlx_delete_image(mlx, floor_img);
+
+	mlx_terminate(mlx);
+	return (0);
+}
+
+// int	main()
+// {
+	// void	*mlx_ptr;
+	// char	*title;
+	// char *hey[] = {
+	// "1111111111111111111111111111111111",
+	// "1E0000000000000C00000C000000000001",
+	// "1010010100100000101001000000010101",
+	// "1010010010101010001001000000010101",
+	// "1P0000000C00C0000000000000000000C1",
+	// "1111111111111111111111111111111111",
+	// NULL
+	// };
 
 	// if (check_corners(hey) == -1)
 	// 	ft_printf("map is not valid\n");
@@ -36,10 +78,10 @@ int	main()
 	// 	ft_printf("map is not valid\n");
 	// else
 	// 	ft_printf("map is valid\n");
-	if (check_shape(hey) == -1)
-		ft_printf("map is not valid\n");
-	else
-		ft_printf("map is valid\n");
+	// if (check_shape(hey) == -1)
+	// 	ft_printf("map is not valid\n");
+	// else
+	// 	ft_printf("map is valid\n");
 	// if (hey[1][0] > 99)
 	// 	return ;
 	// title = "Bhen";
@@ -51,8 +93,8 @@ int	main()
 	// init_map(hey);
 	// mlx_loop(mlx_ptr);
 	// free(mlx_ptr);
-	return (0);
-}
+// 	return (0);
+// }
 
 // static void	init_map(char **hey)
 // {
