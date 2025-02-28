@@ -6,7 +6,7 @@
 /*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 19:00:43 by bolcay            #+#    #+#             */
-/*   Updated: 2025/02/28 18:42:43 by batuhan          ###   ########.fr       */
+/*   Updated: 2025/02/28 19:00:28 by batuhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	move_up(t_game *game, t_player *player)
 	{
 		ft_printf("a motivational message for collecting something!!!\n");
 		game->collectable_count++;
-		map_background(game, (player->x - 1), player->y);
+		map_background(game, (player->x + 1), player->y);
 		player_image(game, player->x, player->y);
 		game->map[player->x][player->y] = '0';
 	}
@@ -63,7 +63,7 @@ int	move_up(t_game *game, t_player *player)
 	}
 	else if (game->map[player->x][player->y] == '0')
 	{
-		map_background(game, (player->x - 1), player->y);
+		map_background(game, (player->x + 1), player->y);
 		player_image(game, player->x, player->y);
 	}
 	player->moves++;
@@ -98,7 +98,7 @@ int	move_down(t_game *game, t_player *player)
 	}
 	else if (game->map[player->x][player->y] == '0')
 	{
-		map_background(game, (player->x + 1), player->y);
+		map_background(game, (player->x - 1), player->y);
 		player_image(game, player->x, player->y);
 	}
 	player->moves++;
