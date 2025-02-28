@@ -6,7 +6,7 @@
 /*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:59:17 by batuhan           #+#    #+#             */
-/*   Updated: 2025/02/28 18:28:50 by batuhan          ###   ########.fr       */
+/*   Updated: 2025/02/28 20:29:17 by batuhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void    map_floor(t_game *game)
         while (game->map[row][col])
         {
             if (game->map[row][col] == '0')
-                mlx_image_to_window(game->mlx, floor, (row * TILE_SIZE), (col * TILE_SIZE));
+                mlx_image_to_window(game->mlx, floor, (col * TILE_SIZE), (row * TILE_SIZE));
             col++;
         }
         row++;
@@ -65,7 +65,7 @@ void    map_wall(t_game *game)
         while (game->map[row][col])
         {
             if (game->map[row][col] == '1')
-                mlx_image_to_window(game->mlx, wall, (row * TILE_SIZE), (col * TILE_SIZE));
+                mlx_image_to_window(game->mlx, wall, (col * TILE_SIZE), (row * TILE_SIZE));
             col++;
         }
         row++;
@@ -93,7 +93,7 @@ void    map_collectable(t_game *game)
         {
             if (game->map[row][col] == 'C')
             {
-                mlx_image_to_window(game->mlx, collectable, (row * TILE_SIZE), (col * TILE_SIZE));
+                mlx_image_to_window(game->mlx, collectable, (col * TILE_SIZE), (row * TILE_SIZE));
                 game->collectable++;
             }
             col++;
@@ -121,7 +121,7 @@ void    map_exit(t_game *game)
         while (game->map[row][col])
         {
             if (game->map[row][col] == 'E')
-                mlx_image_to_window(game->mlx, exit, (row * TILE_SIZE), (col * TILE_SIZE));
+                mlx_image_to_window(game->mlx, exit, (col * TILE_SIZE), (row * TILE_SIZE));
             col++;
         }
         row++;
@@ -147,7 +147,7 @@ void    map_player(t_game *game)
         while (game->map[row][col])
         {
             if (game->map[row][col] == 'P')
-                mlx_image_to_window(game->mlx, player, (row * TILE_SIZE), (col * TILE_SIZE));
+                mlx_image_to_window(game->mlx, player, (col * TILE_SIZE), (row * TILE_SIZE));
             col++;
         }
         row++;
@@ -165,8 +165,8 @@ void    map_background(t_game *game, int x, int y)
     game->player->floor_image = mlx_texture_to_image(game->mlx, floor_image);
     if (!game->player->floor_image || !floor_image)
         return ;
-    col = x * TILE_SIZE;
-    row = y * TILE_SIZE;
+    col = y * TILE_SIZE;
+    row = x * TILE_SIZE;
     mlx_image_to_window(game->mlx, game->player->floor_image, col, row);
     mlx_delete_texture(floor_image);
 }
@@ -181,8 +181,8 @@ void    player_image(t_game *game, int x, int y)
     game->player->player_image = mlx_texture_to_image(game->mlx, player_image);
     if (!game->player->player_image || !player_image)
         return ;
-    col = x * TILE_SIZE;
-    row = y * TILE_SIZE;
+    col = y * TILE_SIZE;
+    row = x * TILE_SIZE;
     mlx_image_to_window(game->mlx, game->player->player_image, col, row);
     mlx_delete_texture(player_image);
 }
