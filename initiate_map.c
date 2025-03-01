@@ -6,7 +6,7 @@
 /*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:59:17 by batuhan           #+#    #+#             */
-/*   Updated: 2025/02/28 20:29:17 by batuhan          ###   ########.fr       */
+/*   Updated: 2025/03/01 14:50:49 by batuhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void    map_floor(t_game *game)
         col = 0;
         while (game->map[row][col])
         {
-            if (game->map[row][col] == '0')
+            if (game->map[row][col] == '0' || game->map[row][col] == 'P')
                 mlx_image_to_window(game->mlx, floor, (col * TILE_SIZE), (row * TILE_SIZE));
             col++;
         }

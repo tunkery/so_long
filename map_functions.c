@@ -6,7 +6,7 @@
 /*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 15:15:10 by batuhan           #+#    #+#             */
-/*   Updated: 2025/02/28 18:15:02 by batuhan          ###   ########.fr       */
+/*   Updated: 2025/03/01 14:51:50 by batuhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,6 @@ char **read_map(t_game *game)
     return (temp);
 }
 
-// void    initiate_maps(t_game *game)
-// {
-//     game->map = read_map(game);
-//     if (!game->map)
-//         return ;
-//     game->mlx = mlx_init(WIDTH, HEIGHT, "game", true);
-    
-// }
-
 void	start_point(t_game *game)
 {
 	int	i;
@@ -61,8 +52,8 @@ void	start_point(t_game *game)
 		{
 			if (game->map[i][j] == 'P')
 			{
-				game->player->x = i;
-				game->player->y = j;
+				game->player->x = j;
+				game->player->y = i;
 				return ;
 			}
 			j++;
