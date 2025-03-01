@@ -6,7 +6,7 @@
 /*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 15:15:10 by batuhan           #+#    #+#             */
-/*   Updated: 2025/03/01 14:51:50 by batuhan          ###   ########.fr       */
+/*   Updated: 2025/03/01 19:29:52 by batuhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char **read_map(t_game *game)
     int     i;
     int     fd;
 
-    temp = (char **)malloc(sizeof(char **) * (size_of_map(game)) + 1);
+    temp = (char **)malloc(sizeof(char **) * (size_of_map(game) + 1));
     if (!temp)
         return (0);
     fd = open(game->map_file, O_RDONLY);
@@ -30,8 +30,8 @@ char **read_map(t_game *game)
         return (NULL);
     while (temp[i])
     {
-        if (temp[i][ft_strlen(temp[i])] == '\n')
-            temp[i][ft_strlen(temp[i])] = '\0';
+        if (temp[i][ft_strlen(temp[i]) - 1] == '\n')
+            temp[i][ft_strlen(temp[i]) - 1] = '\0';
         i++;
         temp[i] = get_next_line(fd);
     }
@@ -52,8 +52,8 @@ void	start_point(t_game *game)
 		{
 			if (game->map[i][j] == 'P')
 			{
-				game->player->x = j;
-				game->player->y = i;
+				game->player->x = i;
+				game->player->y = j;
 				return ;
 			}
 			j++;

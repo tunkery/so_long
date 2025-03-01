@@ -6,7 +6,7 @@
 /*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:05:29 by bolcay            #+#    #+#             */
-/*   Updated: 2025/02/28 18:02:48 by batuhan          ###   ########.fr       */
+/*   Updated: 2025/03/01 19:07:12 by batuhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,29 @@
 
 typedef struct s_player
 {
-	int	x;
-	int	y;
-	int	moves;
+	int			x;
+	int			y;
+	int			moves;
 	mlx_image_t	*player_image;
 	mlx_image_t	*floor_image;
 }	t_player;
 
-
 typedef struct s_game
 {
-	mlx_t	*mlx;
-	char	**map;
-	char	*map_file;
+	mlx_t		*mlx;
+	char		**map;
+	char		*map_file;
 	t_player	*player;
-	int		collectable_count;
-	int		collectable;
-	int		exit;
-	int		exit_count;
-	int		start;
-	int		start_count;
+	int			collectable_count;
+	int			collectable;
+	int			exit;
+	int			exit_count;
+	int			start;
+	int			start_count;
+	int			exit_found;
+	int			cc;
+	int			row_lenght;
+	int			col_lenght;
 }	t_game;
 
 void    map_floor(t_game *game);
@@ -72,6 +75,8 @@ int 	size_of_map(t_game *game);
 char 	**read_map(t_game *game);
 
 void    initiate_game(char  **av);
+
+int		check_map(t_game *game);
 
 // int	check_corners(char **str);
 // int	check_items(char **str);

@@ -6,7 +6,7 @@
 /*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 15:11:04 by batuhan           #+#    #+#             */
-/*   Updated: 2025/02/28 18:55:50 by batuhan          ###   ########.fr       */
+/*   Updated: 2025/03/01 19:30:36 by batuhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void    initiate_game(char  **av)
         }
         i++;
     }
+    check_map(game);
     start_point(game);
     game->mlx = mlx_init(WIDTH, HEIGHT, "game", true);
     initiate_map(game);
