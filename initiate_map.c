@@ -6,7 +6,7 @@
 /*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:59:17 by batuhan           #+#    #+#             */
-/*   Updated: 2025/03/01 19:31:34 by batuhan          ###   ########.fr       */
+/*   Updated: 2025/03/02 14:57:42 by batuhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void    map_floor(t_game *game)
     int	col;
     int row;
 
-    floor_image = mlx_load_png("images/dungeon_tile1.png");
+    floor_image = mlx_load_png("images/floor.png");
     floor = mlx_texture_to_image(game->mlx, floor_image);
     if (!floor || !floor_image)
         return ;
@@ -38,7 +38,8 @@ void    map_floor(t_game *game)
         col = 0;
         while (game->map[row][col])
         {
-            if (game->map[row][col] == '0' || game->map[row][col] == 'P')
+            if (game->map[row][col] == '0' || game->map[row][col] == 'P'
+                || game->map[row][col] == 'C' || game->map[row][col] == 'E')
                 mlx_image_to_window(game->mlx, floor, (col * TILE_SIZE), (row * TILE_SIZE));
             col++;
         }
@@ -54,7 +55,7 @@ void    map_wall(t_game *game)
     int col;
     int row;
 
-    wall_image = mlx_load_png("images/dungeon_wall.png");
+    wall_image = mlx_load_png("images/wall.png");
     wall = mlx_texture_to_image(game->mlx, wall_image);
     if (!wall_image || !wall)
         return ;
@@ -80,7 +81,7 @@ void    map_collectable(t_game *game)
     int col;
     int row;
 
-    collectable_image = mlx_load_png("images/collectable.png");
+    collectable_image = mlx_load_png("images/magic.png");
     collectable = mlx_texture_to_image(game->mlx, collectable_image);
     if (!collectable || !collectable_image)
         return ;
@@ -110,7 +111,7 @@ void    map_exit(t_game *game)
     int col;
     int row;
 
-    exit_image = mlx_load_png("images/exit_image.png");
+    exit_image = mlx_load_png("images/door.png");
     exit = mlx_texture_to_image(game->mlx, exit_image);
     if (!exit_image || !exit)
         return ;
@@ -127,62 +128,4 @@ void    map_exit(t_game *game)
         row++;
     }
     mlx_delete_texture(exit_image);
-}
-
-void    map_player(t_game *game)
-{
-    mlx_image_t *player;
-    mlx_texture_t   *player_image;
-    int col;
-    int row;
-
-    player_image = mlx_load_png("images/player_image.png");
-    player = mlx_texture_to_image(game->mlx, player_image);
-    if (!player_image || !player)
-        return ;
-    row = 0;
-    while (game->map[row])
-    {
-        col = 0;
-        while (game->map[row][col])
-        {
-            if (game->map[row][col] == 'P')
-                mlx_image_to_window(game->mlx, player, (col * TILE_SIZE), (row * TILE_SIZE));
-            col++;
-        }
-        row++;
-    }
-    mlx_delete_texture(player_image);
-}
-
-void    map_background(t_game *game, int x, int y)
-{
-    mlx_texture_t   *floor_image;
-    int	col;
-    int row;
-
-    floor_image = mlx_load_png("images/dungeon_tile1.png");
-    game->player->floor_image = mlx_texture_to_image(game->mlx, floor_image);
-    if (!game->player->floor_image || !floor_image)
-        return ;
-    col = y * TILE_SIZE;
-    row = x * TILE_SIZE;
-    mlx_image_to_window(game->mlx, game->player->floor_image, col, row);
-    mlx_delete_texture(floor_image);
-}
-
-void    player_image(t_game *game, int x, int y)
-{
-    mlx_texture_t   *player_image;
-    int col;
-    int row;
-
-    player_image = mlx_load_png("images/player_image.png");
-    game->player->player_image = mlx_texture_to_image(game->mlx, player_image);
-    if (!game->player->player_image || !player_image)
-        return ;
-    col = y * TILE_SIZE;
-    row = x * TILE_SIZE;
-    mlx_image_to_window(game->mlx, game->player->player_image, col, row);
-    mlx_delete_texture(player_image);
 }

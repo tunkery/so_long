@@ -6,7 +6,7 @@
 /*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:05:29 by bolcay            #+#    #+#             */
-/*   Updated: 2025/03/01 19:07:12 by batuhan          ###   ########.fr       */
+/*   Updated: 2025/03/02 17:55:20 by batuhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,11 @@ char 	**read_map(t_game *game);
 void    initiate_game(char  **av);
 
 int		check_map(t_game *game);
-
-// int	check_corners(char **str);
-// int	check_items(char **str);
-// int	check_shape(char **str);
+void	dfs(t_game *game, bool **visited, int row, int col);
+void	initiate_directions(int directions[4][2]);
+void    deallocate_struct(t_game *game);
+void    deallocate_bool(bool **visited);
+void    deallocate_game(t_game *game);
+void    error_handling_map(t_game *game);
 
 #endif

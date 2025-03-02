@@ -6,12 +6,13 @@
 #    By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/16 19:05:06 by bolcay            #+#    #+#              #
-#    Updated: 2025/03/01 19:01:21 by batuhan          ###   ########.fr        #
+#    Updated: 2025/03/02 17:37:02 by batuhan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c initiate_map.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
-		key_stuff.c helper_functions.c map_functions.c initiate_game.c map_stuff.c
+SRCS = main.c initiate_map.c initiate_map_2.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
+		key_stuff.c helper_functions.c map_functions.c initiate_game.c map_stuff.c move_up.c move_down.c \
+		move_left.c move_right.c deallocation.c error_handling.c
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g $(INCLUDE)

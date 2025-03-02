@@ -6,7 +6,7 @@
 /*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 15:11:04 by batuhan           #+#    #+#             */
-/*   Updated: 2025/03/01 19:30:36 by batuhan          ###   ########.fr       */
+/*   Updated: 2025/03/02 17:33:57 by batuhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,14 @@ void    initiate_game(char  **av)
     game->map = read_map(game);
     if (!game->map)
         return ;
-    int i = 0;
-    int j;
-    while (game->map[i])
-    {
-        j = 0;
-        while (game->map[i][j])
-        {
-            ft_printf("%c", game->map[i][j]);
-            j++;
-        }
-        i++;
-    }
     check_map(game);
     start_point(game);
     game->mlx = mlx_init(WIDTH, HEIGHT, "game", true);
+    if (!game->mlx)
+        return ;
     initiate_map(game);
     mlx_key_hook(game->mlx, key_hook, game);
     mlx_loop(game->mlx);
+    mlx_terminate(game->mlx);
+    deallocate_game(game);
 }
