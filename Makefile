@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+         #
+#    By: bolcay <bolcay@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/16 19:05:06 by bolcay            #+#    #+#              #
-#    Updated: 2025/03/02 17:37:02 by batuhan          ###   ########.fr        #
+#    Updated: 2025/03/02 22:28:42 by bolcay           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = main.c initiate_map.c initiate_map_2.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
-		key_stuff.c helper_functions.c map_functions.c initiate_game.c map_stuff.c move_up.c move_down.c \
+		key_hook.c helper_functions.c map_functions.c initiate_game.c check_map.c move_up.c move_down.c \
 		move_left.c move_right.c deallocation.c error_handling.c
 
 CC = cc
@@ -31,7 +31,7 @@ MLX42_DIR = MLX42
 MLX42_LIB = $(MLX42_DIR)/build/libmlx42.a
 
 INCLUDE     = -I$(MLX42_DIR)/include -I header -I libft
-LDINCLUDE   = -L$(MLX42_DIR)/build -lmlx42 -L$(LIBFT_DIR) -lft -L$(FT_PRINTF_DIR) -lftprintf -lglfw
+LDINCLUDE   = -L$(MLX42_DIR)/build -lmlx42 -L$(LIBFT_DIR) -lft -L$(FT_PRINTF_DIR) -lftprintf -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 
 all: ${NAME}
 

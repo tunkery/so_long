@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bolcay <bolcay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:05:29 by bolcay            #+#    #+#             */
-/*   Updated: 2025/03/02 17:55:20 by batuhan          ###   ########.fr       */
+/*   Updated: 2025/03/02 20:46:45 by bolcay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <stddef.h>
 # include <fcntl.h>
 
-# define TILE_SIZE 32
+# define TS 32
 # define WIDTH 2200
 # define HEIGHT	1200
 
@@ -45,9 +45,7 @@ typedef struct s_game
 	t_player	*player;
 	int			collectable_count;
 	int			collectable;
-	int			exit;
 	int			exit_count;
-	int			start;
 	int			start_count;
 	int			exit_found;
 	int			cc;
@@ -55,14 +53,14 @@ typedef struct s_game
 	int			col_lenght;
 }	t_game;
 
-void    map_floor(t_game *game);
-void    map_wall(t_game *game);
-void    map_collectable(t_game *game);
-void    map_exit(t_game *game);
-void    map_player(t_game *game);
-void    initiate_map(t_game *game);
-void    map_background(t_game *game, int x, int y);
-void    player_image(t_game *game, int x, int y);
+void	map_floor(t_game *game);
+void	map_wall(t_game *game);
+void	map_collectable(t_game *game);
+void	map_exit(t_game *game);
+void	map_player(t_game *game);
+void	initiate_map(t_game *game);
+void	map_background(t_game *game, int x, int y);
+void	player_image(t_game *game, int x, int y);
 void	start_point(t_game *game);
 
 void	key_hook(mlx_key_data_t keys, void *hey);
@@ -71,17 +69,19 @@ int		move_down(t_game *game, t_player *player);
 int		move_left(t_game *game, t_player *player);
 int		move_right(t_game *game, t_player *player);
 
-int 	size_of_map(t_game *game);
-char 	**read_map(t_game *game);
+int		size_of_map(t_game *game);
+char	**read_map(t_game *game);
 
-void    initiate_game(char  **av);
+void	initiate_game(char **av);
 
 int		check_map(t_game *game);
 void	dfs(t_game *game, bool **visited, int row, int col);
 void	initiate_directions(int directions[4][2]);
-void    deallocate_struct(t_game *game);
-void    deallocate_bool(bool **visited);
-void    deallocate_game(t_game *game);
-void    error_handling_map(t_game *game);
+void	deallocate_struct(t_game *game);
+void	deallocate_bool(bool **visited);
+void	deallocate_game(t_game *game);
+void	error_handling_map(t_game *game);
+void	initiate_variables(t_game *game);
+void	clean_exit(t_game *game);
 
 #endif

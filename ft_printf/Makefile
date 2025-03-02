@@ -6,7 +6,7 @@
 #    By: bolcay <bolcay@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/14 20:30:18 by bolcay            #+#    #+#              #
-#    Updated: 2025/02/15 14:44:20 by bolcay           ###   ########.fr        #
+#    Updated: 2025/03/02 22:28:24 by bolcay           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRCS = ft_printf_utils.c ft_printf_utils2.c ft_printf.c ft_printf_utils3.c
 OBJS = $(SRCS:.c=.o)
 NAME = libftprintf.a
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 RM = rm -fr
 
 ${NAME}: ${OBJS}

@@ -3,40 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   map_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: batuhan <batuhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bolcay <bolcay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 15:15:10 by batuhan           #+#    #+#             */
-/*   Updated: 2025/03/02 18:01:49 by batuhan          ###   ########.fr       */
+/*   Updated: 2025/03/02 20:36:40 by bolcay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char **read_map(t_game *game)
+char	**read_map(t_game *game)
 {
-    char    **temp;
-    int     i;
-    int     fd;
+	char	**temp;
+	int		i;
+	int		fd;
 
-    temp = (char **)malloc(sizeof(char **) * (size_of_map(game) + 1));
-    if (!temp)
-        return (0);
-    fd = open(game->map_file, O_RDONLY);
-    if (fd < 0)
-        return (0);
-    i = 0;
-    temp[i] = get_next_line(fd);
-    if (!temp[i])
-        return (NULL);
-    while (temp[i])
-    {
-        if (temp[i][ft_strlen(temp[i]) - 1] == '\n')
-            temp[i][ft_strlen(temp[i]) - 1] = '\0';
-        i++;
-        temp[i] = get_next_line(fd);
-    }
-    close (fd);
-    return (temp);
+	temp = (char **)malloc(sizeof(char **) * (size_of_map(game) + 1));
+	if (!temp)
+		return (0);
+	fd = open(game->map_file, O_RDONLY);
+	if (fd < 0)
+		return (0);
+	i = 0;
+	temp[i] = get_next_line(fd);
+	if (!temp[i])
+		return (NULL);
+	while (temp[i])
+	{
+		if (temp[i][ft_strlen(temp[i]) - 1] == '\n')
+			temp[i][ft_strlen(temp[i]) - 1] = '\0';
+		i++;
+		temp[i] = get_next_line(fd);
+	}
+	close (fd);
+	return (temp);
 }
 
 void	start_point(t_game *game)
@@ -80,7 +80,7 @@ void	dfs(t_game *game, bool **visited, int row, int col)
 	{
 		n_row = row + directions[i][0];
 		n_col = col + directions[i][1];
-		if (n_row >= 0 && n_row < game->row_lenght && n_col >= 0 
+		if (n_row >= 0 && n_row < game->row_lenght && n_col >= 0
 			&& n_col < game->col_lenght && !visited[n_row][n_col]
 			&& game->map[n_row][n_col] != '1')
 			dfs(game, visited, n_row, n_col);
