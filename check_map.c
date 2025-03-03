@@ -6,7 +6,7 @@
 /*   By: bolcay <bolcay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 16:36:57 by bolcay            #+#    #+#             */
-/*   Updated: 2025/03/02 22:28:11 by bolcay           ###   ########.fr       */
+/*   Updated: 2025/03/03 15:33:49 by bolcay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ static int	check_valid_path(t_game *game)
 	}
 	start_point(game);
 	dfs(game, visited, game->player->x, game->player->y);
+	while (--i >= 0)
+		free(visited[i]);
+	free(visited);
 	if (game->exit_found > 0 && game->cc == game->collectable)
 		return (1);
 	return (-1);

@@ -6,7 +6,7 @@
 /*   By: bolcay <bolcay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:05:29 by bolcay            #+#    #+#             */
-/*   Updated: 2025/03/02 20:46:45 by bolcay           ###   ########.fr       */
+/*   Updated: 2025/03/03 15:27:06 by bolcay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,19 @@
 # include <fcntl.h>
 
 # define TS 32
-# define WIDTH 2200
-# define HEIGHT	1200
+# define WIDTH 1500
+# define HEIGHT	600
 
 typedef struct s_player
 {
 	int			x;
 	int			y;
 	int			moves;
+	mlx_image_t	*player_image_c;
+	mlx_image_t	*floor_image_c;
+	mlx_image_t	*wall_image;
+	mlx_image_t	*exit_image;
+	mlx_image_t	*coll_image;
 	mlx_image_t	*player_image;
 	mlx_image_t	*floor_image;
 }	t_player;
