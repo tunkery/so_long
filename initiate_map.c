@@ -6,7 +6,7 @@
 /*   By: bolcay <bolcay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:59:17 by batuhan           #+#    #+#             */
-/*   Updated: 2025/03/03 01:42:23 by bolcay           ###   ########.fr       */
+/*   Updated: 2025/03/04 15:54:13 by bolcay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	map_floor(t_game *game)
 		{
 			if (game->map[row][col] == '0' || game->map[row][col] == 'P'
 				|| game->map[row][col] == 'C' || game->map[row][col] == 'E')
-				mlx_image_to_window(game->mlx, game->player->floor_image_c, (col * TS), (row * TS));
+				mlx_image_to_window(game->mlx, game->player->floor_image_c,
+					(col * TS), (row * TS));
 			col++;
 		}
 		row++;
@@ -64,7 +65,8 @@ void	map_wall(t_game *game)
 		while (game->map[row][col])
 		{
 			if (game->map[row][col] == '1')
-				mlx_image_to_window(game->mlx, game->player->wall_image, (col * TS), (row * TS));
+				mlx_image_to_window(game->mlx, game->player->wall_image,
+					(col * TS), (row * TS));
 			col++;
 		}
 		row++;
@@ -89,7 +91,8 @@ void	map_collectable(t_game *game)
 		while (game->map[row][col])
 		{
 			if (game->map[row][col] == 'C')
-				mlx_image_to_window(game->mlx, game->player->coll_image, (col * TS), (row * TS));
+				mlx_image_to_window(game->mlx, game->player->coll_image,
+					(col * TS), (row * TS));
 			col++;
 		}
 		row++;
@@ -114,7 +117,8 @@ void	map_exit(t_game *game)
 		while (game->map[row][col])
 		{
 			if (game->map[row][col] == 'E')
-				mlx_image_to_window(game->mlx, game->player->exit_image, (col * TS), (row * TS));
+				mlx_image_to_window(game->mlx, game->player->exit_image,
+					(col * TS), (row * TS));
 			col++;
 		}
 		row++;

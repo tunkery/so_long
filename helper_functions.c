@@ -6,7 +6,7 @@
 /*   By: bolcay <bolcay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 15:19:20 by batuhan           #+#    #+#             */
-/*   Updated: 2025/03/02 22:27:11 by bolcay           ###   ########.fr       */
+/*   Updated: 2025/03/04 15:12:39 by bolcay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,16 @@ int	size_of_map(t_game *game)
 	if (fd < 0)
 		return (0);
 	string = get_next_line(fd);
+	if (!string)
+		return (0);
 	while (string)
 	{
-		free (string);
+		free(string);
 		string = get_next_line(fd);
 		map_size++;
 	}
-	free (string);
-	close (fd);
+	free(string);
+	close(fd);
 	return (map_size);
 }
 

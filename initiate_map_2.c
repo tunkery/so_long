@@ -6,7 +6,7 @@
 /*   By: bolcay <bolcay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:56:29 by batuhan           #+#    #+#             */
-/*   Updated: 2025/03/03 01:35:05 by bolcay           ###   ########.fr       */
+/*   Updated: 2025/03/04 15:53:51 by bolcay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	map_player(t_game *game)
 		while (game->map[row][col])
 		{
 			if (game->map[row][col] == 'P')
-				mlx_image_to_window(game->mlx, game->player->player_image_c, (col * TS), (row * TS));
+				mlx_image_to_window(game->mlx, game->player->player_image_c,
+					(col * TS), (row * TS));
 			col++;
 		}
 		row++;

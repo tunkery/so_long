@@ -6,7 +6,7 @@
 /*   By: bolcay <bolcay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 15:15:10 by batuhan           #+#    #+#             */
-/*   Updated: 2025/03/03 15:18:22 by bolcay           ###   ########.fr       */
+/*   Updated: 2025/03/04 17:04:04 by bolcay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ char	**read_map(t_game *game)
 
 	temp = (char **)malloc(sizeof(char **) * (size_of_map(game) + 1));
 	if (!temp)
-		return (0);
+		return (NULL);
 	fd = open(game->map_file, O_RDONLY);
 	if (fd < 0)
-		return (0);
+		return (NULL);
 	i = 0;
 	temp[i] = get_next_line(fd);
 	if (!temp[i])
@@ -35,7 +35,7 @@ char	**read_map(t_game *game)
 		i++;
 		temp[i] = get_next_line(fd);
 	}
-	close (fd);
+	close(fd);
 	return (temp);
 }
 

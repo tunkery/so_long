@@ -6,7 +6,7 @@
 /*   By: bolcay <bolcay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 15:11:04 by batuhan           #+#    #+#             */
-/*   Updated: 2025/03/02 20:44:31 by bolcay           ###   ########.fr       */
+/*   Updated: 2025/03/04 15:11:42 by bolcay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	initiate_game(char **av)
 		return ;
 	initiate_variables(game);
 	check_map(game);
-	start_point(game);
 	game->mlx = mlx_init(WIDTH, HEIGHT, "game", true);
 	if (!game->mlx)
 		return ;

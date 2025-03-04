@@ -6,7 +6,7 @@
 /*   By: bolcay <bolcay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 16:40:54 by batuhan           #+#    #+#             */
-/*   Updated: 2025/03/03 15:50:39 by bolcay           ###   ########.fr       */
+/*   Updated: 2025/03/04 15:15:41 by bolcay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,11 @@ void	deallocate_bool(bool **visited)
 void	deallocate_game(t_game *game)
 {
 	deallocate_struct(game);
+	game->map = NULL;
 	free(game->player);
+	game->player = NULL;
 	free(game);
+	game = NULL;
 }
 
 void	clean_exit(t_game *game)

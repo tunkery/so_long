@@ -6,7 +6,7 @@
 /*   By: bolcay <bolcay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:05:29 by bolcay            #+#    #+#             */
-/*   Updated: 2025/03/03 15:27:06 by bolcay           ###   ########.fr       */
+/*   Updated: 2025/03/04 17:06:20 by bolcay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 # include "../libft/libft.h"
 # include "../ft_printf/ft_printf.h"
-# include "../MLX42/include/MLX42/MLX42.h"
+# include "MLX42/include/MLX42/MLX42.h"
 # include "get_next_line/get_next_line.h"
 # include <unistd.h>
 # include <stdbool.h>

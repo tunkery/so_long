@@ -6,22 +6,33 @@
 /*   By: bolcay <bolcay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:08:33 by bolcay            #+#    #+#             */
-/*   Updated: 2025/03/03 01:57:36 by bolcay           ###   ########.fr       */
+/*   Updated: 2025/03/04 14:45:28 by bolcay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	checkleak()
-{
-	system("leaks so_long");
-}
+// void	checkleak()
+// {
+// 	system("leaks so_long");
+// }
 
 int	main(int ac, char **av)
 {
+	char	*check;
+
 	if (ac != 2)
+	{
+		ft_printf("Invalid argument\n");
 		return (0);
-	atexit(&checkleak);
+	}
+	check = ft_strrchr(av[1], '.');
+	if (!check || ft_strncmp(check, ".ber", ft_strlen(check)) != 0)
+	{
+		ft_printf("Please enter a .ber file\n");
+		return (0);
+	}
+	// atexit(&checkleak);
 	initiate_game(av);
 	return (0);
 }
