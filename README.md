@@ -49,4 +49,5 @@ Example of a valid `.ber` map file:
 ## Usage
 
 make
+
 ./so_long maps/map1.ber
