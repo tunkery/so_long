@@ -33,6 +33,7 @@ The project introduces basic game development concepts such as textures, sprites
 ## Map Example
 
 Example of a valid `.ber` map file:
+
 11111
 1P0C1
 10001
